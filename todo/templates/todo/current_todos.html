@@ -1,0 +1,32 @@
+{% extends 'todo/base.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My todos</title>
+</head>
+<body>
+{% block content  %}
+
+<h1>My todos</h1>
+
+<ul>
+    {% for todo in todos  %}
+    <li>
+        <a href="{% url 'view_todo' todo.pk %}">
+        {% if todo.important %}
+            <b>{{ todo.title }}</b>
+        {% else %}
+            {{ todo.title }}
+        {% endif %}
+        {% if todo.description %}
+            - {{ todo.description }}
+        {% endif %}
+        </a>
+    </li>
+    {% endfor  %}
+</ul>
+
+{% endblock  %}
+</body>
+</html>
